@@ -34,7 +34,7 @@ A full derivation is available [here](https://www.quantstart.com/articles/Geomet
 
 # Usage
 
-A pre-compiled library file is included for convenience. To begin using the library in your own project, copy the files monte_carlo.a and monte_carlo.h to your project directory. In your C++ project main file, add the library header file:
+A pre-compiled library file is included for convenience (Note: compiled for Linux via Ubuntu 18.04, may not work on Mac/Windows). To begin using the library in your own project, copy the files monte_carlo.a and monte_carlo.h to your project directory. In your C++ project main file, add the library header file:
 
 ```c++
 #include "monte_carlo.h"
