@@ -1,5 +1,5 @@
 # monte-carlo-cpp
-A High speed financial Monte Carlo simulation library for C++
+A high speed financial Monte Carlo simulation library for C++
 
 # Dependencies
 
