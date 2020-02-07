@@ -18,11 +18,11 @@ Price timeseries for simple assets such as commodities and equities are typicall
   <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;dS(t)&space;=&space;\mu&space;S(t)dt&space;&plus;&space;\sigma&space;S(t)B(t)">
 </p>
 
-where:
-S(t) = Asset Price
-μ = Drift
-σ = Volatility
-B(t) = Geometric Brownian Motion
+Where:
+- S(t) = Asset Price,
+- μ = Drift,
+- σ = Volatility,
+- B(t) = Geometric Brownian Motion
 
 This SDE can be solved by applying Ito's Lemma, resulting in the following equation:
 
