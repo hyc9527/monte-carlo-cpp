@@ -1,5 +1,5 @@
 # monte-carlo-cpp
-High speed financial Monte Carlo simulation library for C++
+A High speed financial Monte Carlo simulation library for C++
 
 # Dependencies
 
@@ -8,6 +8,8 @@ High speed financial Monte Carlo simulation library for C++
 * Nlohmann Json (included)
 * Python 3
 * Matplotlib
+* Pandas
+* [compile-me](https://github.com/cnaimo/compile-me) (included)
 
 # Usage
 
