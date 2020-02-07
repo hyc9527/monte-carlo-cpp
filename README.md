@@ -3,12 +3,12 @@ A high speed financial Monte Carlo simulation library for C++
 
 # Dependencies
 
-* G++
-* Boost
-* Nlohmann Json (included)
-* Python 3
-* Matplotlib
-* Pandas
+* [G++](https://gcc.gnu.org/)
+* [Boost](https://www.boost.org/)
+* [Nlohmann Json](https://github.com/nlohmann/json) (included)
+* [Python 3](https://www.python.org/)
+* [Matplotlib](https://github.com/matplotlib/matplotlib)
+* [Pandas](https://github.com/pandas-dev/pandas)
 * [compile-me](https://github.com/cnaimo/compile-me) (included)
 
 # Usage
