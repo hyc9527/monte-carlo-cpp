@@ -32,7 +32,7 @@ std::vector<std::vector<double> > monte_carlo(std::vector<double> data, const in
 
     std::random_device rand; 
     std::mt19937_64 gen(rand());
-    std::normal_distribution<double> dist(mu, sigma); 
+    std::normal_distribution<double> dist(0.0, sigma); 
 
     for(int i=0; i!=iterations; ++i){
     	sim.emplace_back(data[data.size()-1] * exp(drift + dist(gen)));
