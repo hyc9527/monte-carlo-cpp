@@ -14,6 +14,7 @@ A high speed financial Monte Carlo simulation library for C++
 * [compile-me](https://github.com/cnaimo/compile-me) (included)
 
 # Theory
+## Assets
 Price timeseries for simple assets such as commodities and equities are typically modelled with the following stochastic differential equation (SDE):
 
 <p align="center">
@@ -33,6 +34,27 @@ This SDE can be solved by applying Ito's Lemma, resulting in the following equat
 </p>
 
 A full derivation is available [here](https://www.quantstart.com/articles/Geometric-Brownian-Motion/). This final equation is used to perform the Monte Carlo simulation.
+
+## Derivatives: Asian Options
+Asian options have a variety of payout formulas. The formulas for fixed strike asian options with arithmatic averages are:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;Call(T)&space;=&space;max\left&space;(&space;\frac{1}{T}&space;\int_{0}^{T}&space;S(t)dt&space;-&space;K,&space;0&space;\right&space;)">
+</p>
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;Put(T)&space;=&space;max\left&space;(K&space;-&space;\frac{1}{T}&space;\int_{0}^{T}&space;S(t)dt,&space;0&space;\right&space;)">
+</p>
+
+Where:
+- S(t) = Underlying Asset Price
+- K = Strike Price
+
+Pricing Asian fixed strike arithmatic average options via Monte Carlo is accomplished by:
+- Pefroming a Monte Carlo simlation on the underlying asset through the option maturity date
+- Averaging each underlying asset Monte Carlo iteration
+- Determining the option payout for each iteration
+- Averaging payouts between iterations
+- Discounting backward using the current risk free rate and the number of days until option maturity
 
 # Usage
 
