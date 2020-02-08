@@ -50,7 +50,7 @@ Where:
 - K = Strike Price
 
 Pricing Asian fixed strike arithmatic average options via Monte Carlo is accomplished by:
-- Pefroming a Monte Carlo simlation on the underlying asset through the option maturity date
+- Perfoming a Monte Carlo simlation on the underlying asset through the option maturity date
 - Averaging each underlying asset Monte Carlo iteration
 - Determining the option payout for each iteration
 - Averaging payouts between iterations
