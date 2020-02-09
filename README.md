@@ -33,26 +33,52 @@ This SDE can be solved by applying Ito's Lemma, resulting in the following equat
   <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;S(t)&space;=&space;S(0)e^{(\mu&space;-&space;\frac{1}{2}\sigma&space;^{2})t&space;&plus;&space;\sigma&space;B(t)}">
 </p>
 
-A full derivation is available [here](https://www.quantstart.com/articles/Geometric-Brownian-Motion/). This final equation is used to perform the Monte Carlo simulation.
+A full derivation is available [here](https://www.quantstart.com/articles/Geometric-Brownian-Motion/). This equation is used to perform the Monte Carlo simulation.
 
-## Derivatives: Asian Options
-Asian options have a variety of payout formulas. The formulas for fixed strike asian options with arithmatic averages are:
+## Derivatives: European Options
+
+The value of a european option at some time t is as follows:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;Call(T)&space;=&space;max\left&space;(&space;\frac{1}{T}&space;\int_{0}^{T}&space;S(t)dt&space;-&space;K,&space;0&space;\right&space;)">
-</p>
-<p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;Put(T)&space;=&space;max\left&space;(K&space;-&space;\frac{1}{T}&space;\int_{0}^{T}&space;S(t)dt,&space;0&space;\right&space;)">
+  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;V(S(t),t)&space;=&space;\mathbb{E}^{Q}\left&space;[&space;h(S(T),T))exp\left&space;(-&space;\int_{t}^{T}r(s)ds\right&space;)&space;\right&space;]">
 </p>
 
 Where:
-- S(t) = Underlying Asset Price
+- V = Option Value
+- S = Underlying Asset Price
+- h = Option Payoff
+- r = Risk Free Rate
+- T = Time of Option Maturity
+- E<sup>Q</sup> = Expectation with risk neutral measure (Q)
+
+The value of option payoff at maturity varies between option types:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;h(S(T),T)&space;=&space;\left\{\begin{matrix}&space;max\left&space;[&space;S(T)-K,0&space;\right&space;],&space;&&space;for\,call\,option&space;\\&space;max\left&space;[&space;K-S(T),0&space;\right&space;],&space;&&space;for\,put\,option&space;\end{matrix}\right.">
+</p>
+
+Where:
 - K = Strike Price
 
-Pricing Asian fixed strike arithmatic average options via Monte Carlo is accomplished by:
+## Derivatives: Asian Options
+
+The equation for valuing european options can be applied to asian options as well, taking into account differing payoff formulae:
+
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;V(S(t),t)&space;=&space;\mathbb{E}^{Q}\left&space;[&space;h(S(t,T),T))exp\left&space;(-&space;\int_{t}^{T}r(s)ds\right&space;)&space;\right&space;]">
+</p>
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?h(S(t,T),T)&space;=&space;\left\{\begin{matrix}&space;max\left&space;[&space;\frac{1}{T}(&space;\int_{0}^{T}S(t)dt)-K,&space;0\right&space;],&space;&&space;for\,fixed\,strike\,arithmatic\,mean\,call\,option&space;\\&space;max\left&space;[K&space;-&space;\frac{1}{T}(&space;\int_{0}^{T}S(t)dt),&space;0\right&space;],&space;&&space;for\,fixed\,strike\,arithmatic\,mean\,put\,option&space;\\&space;max\left&space;[&space;S(T)-\frac{k}{T}(&space;\int_{0}^{T}S(t)dt),0&space;\right&space;],&space;&&space;for\,floating\,strike\,arithmatic\,mean\,call\,option\\&space;max\left&space;[\frac{k}{T}(&space;\int_{0}^{T}S(t)dt)-S(T),0&space;\right&space;],&space;&&space;for\,floating\,strike\,arithmatic\,mean\,put\,option&space;\end{matrix}\right.">
+</p>
+
+Where:
+- k = some weighting, typically 1
+
+## Derivatives: Valuing via Monte Carlo
+
+Pricing asian and european options via Monte Carlo is accomplished by:
 - Perfoming a Monte Carlo simulation on the underlying asset through the option maturity date
-- Averaging each underlying asset Monte Carlo iteration
-- Determining the option payout for each iteration
+- Determining the option payout for each Monte Carlo iteration
 - Averaging payouts between iterations
 - Discounting backward using the current risk free rate and the number of days until option maturity
 
@@ -75,4 +101,8 @@ A sample C++ project has been included. Run compile.py and press enter to compil
 ```
 Python3 compile.py
 ```
+# References
+- [Pricing American Options With Monte Carlo Methods](https://www.maths.ox.ac.uk/system/files/attachments/TT18_dissertation_1000246.pdf)
+- [Asian Options](https://en.wikipedia.org/wiki/Asian_option)
+- [Geometric Brownian Motions](https://www.quantstart.com/articles/Geometric-Brownian-Motion/)
 
