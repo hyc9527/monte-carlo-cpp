@@ -100,23 +100,25 @@ std::vector<std::vector<double> > monte_carlo(std::vector<double> data, const in
 ```c++
 double monte_carlo_fixed_strike_arithmatic_avg_asian_call(std::vector<double> data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000);
 ```
-- Returns the estimated value of a fixed strike arithmatic average asian call option. Lookback period for the average price is fixed from the current date through maturity.
+- Returns the estimated value of a fixed strike arithmatic average asian call option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 ```c++
 double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the estimated value of a fixed strike arithmatic average asian put option. Lookback period for the average price is fixed from the current date through maturity.
+- Returns the estimated value of a fixed strike arithmatic average asian put option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 
 ```c++
 double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double> data_underlying, const double k, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the estimated value of a floating strike arithmatic average asian call option. Lookback period for the average price is fixed from the current date through maturity.
+- Returns the estimated value of a floating strike arithmatic average asian call option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
+
 
 ```c++
 double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> data_underlying, const double k, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the estimated value of a floating strike arithmatic average asian put option. Lookback period for the average price is fixed from the current date through maturity.
+- Returns the estimated value of a floating strike arithmatic average asian put option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
+
 
 When compiling, link the library file
 ```
