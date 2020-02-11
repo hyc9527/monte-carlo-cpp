@@ -89,6 +89,34 @@ A pre-compiled library file is included for convenience (Note: compiled for Linu
 ```c++
 #include "monte_carlo.h"
 ```
+## Functions
+
+```c++
+std::vector<std::vector<double> > monte_carlo(std::vector<double> data, const int sim_len, const int iterations)
+```
+- Returns a 2d vector of simulated asset paths of the dimension iterations x sim_len. ```data``` is the historical asset price timeseries.
+
+
+```c++
+double monte_carlo_fixed_strike_arithmatic_avg_asian_call(std::vector<double> data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000);
+```
+- Returns the estimated value of a fixed strike arithmatic average asian call option. Lookback period for the average price is fixed from the current date through maturity.
+
+```c++
+double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
+```
+- Returns the estimated value of a fixed strike arithmatic average asian put option. Lookback period for the average price is fixed from the current date through maturity.
+
+
+```c++
+double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double> data_underlying, const double k, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
+```
+- Returns the estimated value of a floating strike arithmatic average asian call option. Lookback period for the average price is fixed from the current date through maturity.
+
+```c++
+double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> data_underlying, const double k, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
+```
+- Returns the estimated value of a floating strike arithmatic average asian put option. Lookback period for the average price is fixed from the current date through maturity.
 
 When compiling, link the library file
 ```
