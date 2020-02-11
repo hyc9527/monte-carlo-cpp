@@ -5,7 +5,7 @@ A high speed financial Monte Carlo simulation library for C++
 
 # Dependencies
 
-* [G++](https://gcc.gnu.org/)
+* [GCC](https://gcc.gnu.org/)
 * [Boost](https://www.boost.org/)
 * [Nlohmann Json](https://github.com/nlohmann/json) (included)
 * [Python 3](https://www.python.org/)
