@@ -7,11 +7,12 @@ A high speed financial Monte Carlo simulation library for C++
 
 * [GCC](https://gcc.gnu.org/)
 * [Boost](https://www.boost.org/)
-* [Nlohmann Json](https://github.com/nlohmann/json) (included)
+* [Nlohmann Json](https://github.com/nlohmann/json) (Included)
+* [CxxPolyFit](https://github.com/LLNL/CxxPolyFit) (Statically compiled for use with compile-me)
 * [Python 3](https://www.python.org/)
 * [Matplotlib](https://github.com/matplotlib/matplotlib)
 * [Pandas](https://github.com/pandas-dev/pandas)
-* [compile-me](https://github.com/cnaimo/compile-me) (included)
+* [compile-me](https://github.com/cnaimo/compile-me) (Included)
 
 # Theory
 ## Assets
@@ -74,13 +75,18 @@ The equation for valuing european options can be applied to asian options as wel
 Where:
 - k = some weighting, typically 1
 
-## Derivatives: Valuing via Monte Carlo
+## Derivatives: Valuing Asian & European Options
 
 Pricing asian and european options via Monte Carlo is accomplished by:
 - Perfoming a Monte Carlo simulation on the underlying asset through the option maturity date
 - Determining the option payout for each Monte Carlo iteration
 - Averaging payouts between iterations
 - Discounting backward using the current risk free rate and the number of days until option maturity
+
+## Derivatives: Valuing American Options via Longstaff Schwartz
+
+When an American option is exercised only at maturity, its value would be the same as a european option. However, American options give the option holder the right to exercise the option at any time whereas european options can only be exercised at maturity. In order to value American options accurately, the time of ideal option excersize must be determined. One solution proposed by [Longstaff & Schwartz](https://people.math.ethz.ch/~hjfurrer/teaching/LongstaffSchwartzAmericanOptionsLeastSquareMonteCarlo.pdf) is to perform a polynomial regression to estimate the value of continuing to hold an option on each day until maturity and comparing with the value of exercising that option on each day until maturity. The ideal time for exercise is found by locating the first point where immediate exercise is more profitable than the discounted value of continuation. The value of the option is then estimated by averaging all discouted cash flows from ideal option exercise over each underlying Monte Carlo iteration.
+
 
 # Usage
 
