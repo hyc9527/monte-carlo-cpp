@@ -5,7 +5,7 @@ import platform
 
 compiler = 'g++' # g++ for C++, gcc for C
 file_to_compile = 'example.cpp' 
-libraries_to_link = [] # add any required libraries here
+libraries_to_link = ['cxxlsfit', 'blas', 'lapack'] # add any required libraries here
 libraries_that_need_compiling = ['monte_carlo.cpp'] # any cpp/c libraries in your project that you need compiled and linked
 
 #__________________________________________________
@@ -60,7 +60,7 @@ if __name__ == "__main__":
 						execute(compiler + ' -c -o '  + library.split('.')[0] + '.o ' + library)
 						execute('ar rcs ' + library.split('.')[0] + '.a ' + library.split('.')[0] + '.o')
 				print('\nCompiling main:', file_to_compile)
-				execute(compiler + ' -pthread ' + file_to_compile + libstring + astring + ' -O3')  # enable G++ optimization O3
+				execute(compiler + ' -pthread ' + file_to_compile + astring + libstring + ' -O3')  # enable G++ optimization O3
 				print('Compiled project successfully! Running...\n')
 				if enable_sudo:
 					os.system('sudo ./a.out')
