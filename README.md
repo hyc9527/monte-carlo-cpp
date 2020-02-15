@@ -106,6 +106,11 @@ A pre-compiled library file is included for convenience (Note: compiled for Linu
 ```c++
 #include "monte_carlo.h"
 ```
+When compiling, link the library file & dependencies
+```
+g++ my_project.cpp monte_carlo.a -lcxxlsfit -lblas -llapack
+```
+
 ## Functions
 
 ```c++
@@ -146,11 +151,6 @@ double american_call_longstaff_schwartz(std::vector<double> &data_underlying, co
 ```
 - Returns the estimated value of an American call via Longstaff Schwartz
 
-
-When compiling, link the library file
-```
-g++ my_project.cpp monte_carlo.a
-```
 
 # Example
 A sample C++ project has been included. Run compile.py and press enter to compile and run example.cpp:
