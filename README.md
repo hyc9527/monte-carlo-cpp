@@ -165,6 +165,7 @@ Python3 compile.py
 
 
 # References
+- [Valuing American Options by Simulation: A Simple Least-Squares Approach](https://people.math.ethz.ch/~hjfurrer/teaching/LongstaffSchwartzAmericanOptionsLeastSquareMonteCarlo.pdf)
 - [Pricing American Options With Monte Carlo Methods](https://www.maths.ox.ac.uk/system/files/attachments/TT18_dissertation_1000246.pdf)
 - [Asian Options](https://en.wikipedia.org/wiki/Asian_option)
 - [Geometric Brownian Motions](https://www.quantstart.com/articles/Geometric-Brownian-Motion/)
