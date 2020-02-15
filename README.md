@@ -8,7 +8,7 @@ A high speed financial Monte Carlo simulation library for C++
 * [GCC](https://gcc.gnu.org/)
 * [Boost](https://www.boost.org/)
 * [Nlohmann Json](https://github.com/nlohmann/json) (Included)
-* [CxxPolyFit](https://github.com/LLNL/CxxPolyFit) (Statically compiled for use with compile-me)
+* [CxxPolyFit](https://github.com/LLNL/CxxPolyFit) (Must be statically compiled for use with compile-me)
 * [Python 3](https://www.python.org/)
 * [Matplotlib](https://github.com/matplotlib/matplotlib)
 * [Pandas](https://github.com/pandas-dev/pandas)
