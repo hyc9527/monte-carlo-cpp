@@ -7,10 +7,12 @@
 using json = nlohmann::json;
 
 int main(){
+	std::vector<std::vector<double> > vec;
+
 	std::vector<double> your_data = {1.2, 1.2, 1.12, 1.23, 1.02, 1.2, 1.22, 1.225, 1.2, 1.25};
 
 	// run 100 iterations with a length of 250
-	std::vector<std::vector<double> > vec = monte_carlo(your_data, 250, 100);
+	monte_carlo(your_data, vec, 250, 100);
 
 	// save results to json file
 	json j;
