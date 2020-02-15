@@ -74,7 +74,7 @@ double monte_carlo_fixed_strike_arithmatic_avg_asian_call(std::vector<double> &d
     for(auto it=average_prices.begin(); it!=average_prices.end(); ++it){
         sum += std::max(*it - strike, 0.0);
     }
-    return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 365.0));
+    return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 252.0));
 }
 
 double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations){
@@ -102,7 +102,7 @@ double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> &da
     for(auto it=average_prices.begin(); it!=average_prices.end(); ++it){
         sum += std::max(strike - *it, 0.0);
     }
-    return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 365.0));
+    return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 252.0));
 }
 
 double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations){
@@ -138,7 +138,7 @@ double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double>
     for(auto it=average_prices.begin(); it!=average_prices.end(); ++it){
         sum += std::max(maturity_price - (*it * strike), 0.0);
     }
-    return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 365.0));
+    return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 252.0));
 }
 
 double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations){
@@ -174,7 +174,7 @@ double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> 
     for(auto it=average_prices.begin(); it!=average_prices.end(); ++it){
         sum += std::max((*it * strike) - maturity_price, 0.0);
     }
-    return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 365.0));
+    return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 252.0));
 }
 
 double american_put_longstaff_schwartz(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations){
