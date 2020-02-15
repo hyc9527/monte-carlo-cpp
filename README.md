@@ -111,7 +111,7 @@ A pre-compiled library file is included for convenience (Note: compiled for Linu
 ```c++
 void monte_carlo(std::vector<double> &data, std::vector<std::vector<double> > &sim_vec, int sim_len, const int iterations)
 ```
-- Returns a 2d vector of simulated asset paths of the dimension iterations x sim_len. ```data``` is the historical asset price timeseries.
+- Performs a Monte Carlo simulation using ```data``` as the historical asset price timeseries and ```sim_vec``` which will contain the resulting simulation asset paths.
 
 
 ```c++
@@ -139,12 +139,12 @@ double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> 
 ```c++
 double american_put_longstaff_schwartz(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the value of an American put via Longstaff Schwartz
+- Returns the estimated value of an American put via Longstaff Schwartz
 
 ```c++
 double american_call_longstaff_schwartz(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the value of an American call via Longstaff Schwartz
+- Returns the estimated value of an American call via Longstaff Schwartz
 
 
 When compiling, link the library file
