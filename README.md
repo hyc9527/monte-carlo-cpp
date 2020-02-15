@@ -38,7 +38,7 @@ A full derivation is available [here](https://www.quantstart.com/articles/Geomet
 
 ## Derivatives: European Options
 
-The value of a european option at some time t is as follows:
+The value of a European option at some time t is as follows:
 
 <p align="center">
   <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;V(S(t),t)&space;=&space;\mathbb{E}^{Q}\left&space;[&space;h(S(T),T))exp\left&space;(-&space;\int_{t}^{T}r(s)ds\right&space;)&space;\right&space;]">
@@ -63,7 +63,7 @@ Where:
 
 ## Derivatives: Asian Options
 
-The equation for valuing european options can be applied to asian options as well, taking into account differing payoff formulae:
+The equation for valuing European options can be applied to Asian options as well, taking into account differing payoff formulae:
 
 <p align="center">
   <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;V(S(t),t)&space;=&space;\mathbb{E}^{Q}\left&space;[&space;h(S(t,T),T))exp\left&space;(-&space;\int_{t}^{T}r(s)ds\right&space;)&space;\right&space;]">
@@ -77,7 +77,7 @@ Where:
 
 ## Derivatives: Valuing Asian & European Options
 
-Pricing asian and european options via Monte Carlo is accomplished by:
+Pricing Asian and European options via Monte Carlo is accomplished by:
 - Perfoming a Monte Carlo simulation on the underlying asset through the option maturity date
 - Determining the option payout for each Monte Carlo iteration
 - Averaging payouts between iterations
@@ -85,7 +85,7 @@ Pricing asian and european options via Monte Carlo is accomplished by:
 
 ## Derivatives: Valuing American Options via Longstaff Schwartz
 
-When an American option is exercised only at maturity, its value would be the same as a european option. However, American options give the option holder the right to exercise the option at any time whereas european options can only be exercised at maturity. In order to value American options accurately, the time of ideal option excersize must be determined. One solution proposed by [Longstaff & Schwartz](https://people.math.ethz.ch/~hjfurrer/teaching/LongstaffSchwartzAmericanOptionsLeastSquareMonteCarlo.pdf) is to perform a polynomial regression to estimate the value of continuing to hold an option on each day until maturity and comparing with the value of exercising that option on each day until maturity. The ideal time for exercise is found by locating the first point where immediate exercise is more profitable than the discounted value of continuation. The value of the option is then estimated by averaging all discouted cash flows from ideal option exercise over each underlying Monte Carlo iteration.
+When an American option is exercised only at maturity, its value would be the same as a European option. However, American options give the option holder the right to exercise the option at any time whereas European options can only be exercised at maturity. In order to value American options accurately, the time of ideal option excersize must be determined. One solution proposed by [Longstaff & Schwartz](https://people.math.ethz.ch/~hjfurrer/teaching/LongstaffSchwartzAmericanOptionsLeastSquareMonteCarlo.pdf) is to perform a polynomial regression to estimate the value of continuing to hold an option on each day until maturity and comparing with the value of exercising that option on each day until maturity. The ideal time for exercise is found by locating the first point where immediate exercise is more profitable than the discounted value of continuation. The value of the option is then estimated by averaging all discouted cash flows from ideal option exercise over each underlying Monte Carlo iteration.
 
 Using this method, the value of continuation is as follows:
 <p align="center">
@@ -117,24 +117,24 @@ void monte_carlo(std::vector<double> &data, std::vector<std::vector<double> > &s
 ```c++
 double monte_carlo_fixed_strike_arithmatic_avg_asian_call(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the estimated value of a fixed strike arithmatic average asian call option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
+- Returns the estimated value of a fixed strike arithmatic average Asian call option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 ```c++
 double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the estimated value of a fixed strike arithmatic average asian put option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
+- Returns the estimated value of a fixed strike arithmatic average Asian put option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 
 ```c++
 double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the estimated value of a floating strike arithmatic average asian call option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
+- Returns the estimated value of a floating strike arithmatic average Asian call option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 
 ```c++
 double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
-- Returns the estimated value of a floating strike arithmatic average asian put option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
+- Returns the estimated value of a floating strike arithmatic average Asian put option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 ```c++
 double american_put_longstaff_schwartz(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
@@ -158,6 +158,12 @@ A sample C++ project has been included. Run compile.py and press enter to compil
 ```
 Python3 compile.py
 ```
+
+# Todo
+- Add European options
+- Add adjustable average lookback period for Asian options
+
+
 # References
 - [Pricing American Options With Monte Carlo Methods](https://www.maths.ox.ac.uk/system/files/attachments/TT18_dissertation_1000246.pdf)
 - [Asian Options](https://en.wikipedia.org/wiki/Asian_option)
