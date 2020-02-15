@@ -87,6 +87,17 @@ Pricing asian and european options via Monte Carlo is accomplished by:
 
 When an American option is exercised only at maturity, its value would be the same as a european option. However, American options give the option holder the right to exercise the option at any time whereas european options can only be exercised at maturity. In order to value American options accurately, the time of ideal option excersize must be determined. One solution proposed by [Longstaff & Schwartz](https://people.math.ethz.ch/~hjfurrer/teaching/LongstaffSchwartzAmericanOptionsLeastSquareMonteCarlo.pdf) is to perform a polynomial regression to estimate the value of continuing to hold an option on each day until maturity and comparing with the value of exercising that option on each day until maturity. The ideal time for exercise is found by locating the first point where immediate exercise is more profitable than the discounted value of continuation. The value of the option is then estimated by averaging all discouted cash flows from ideal option exercise over each underlying Monte Carlo iteration.
 
+Using this method, the value of continuation is as follows:
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;F(\omega&space;;t_{_k})&space;=&space;\mathbb{E}^{Q}\left&space;[&space;\sum_{j=k&plus;1}^{K}&space;exp\left&space;(-&space;\int_{t_{k}}^{t_{j}}r(\omega,s)ds&space;\right)C(\omega&space;,t_{j};t_{k},T)|\mathfrak{F}_{\textup{tk}}\right&space;]">
+</p>
+
+Where:
+- F(ω;t) = Value of continuation
+- E<sup>Q</sup> = Expectation with risk neutral measure (Q)
+- r(ω,t) = Riskless discount rate
+- C(ω,s;t,T) = Path of option cash flows using using optimal stopping and not exercising before time t
+- 𝕱<sub>tk</sub> = Given information set
 
 # Usage
 
