@@ -109,32 +109,42 @@ A pre-compiled library file is included for convenience (Note: compiled for Linu
 ## Functions
 
 ```c++
-std::vector<std::vector<double> > monte_carlo(std::vector<double> data, const int sim_len, const int iterations)
+void monte_carlo(std::vector<double> &data, std::vector<std::vector<double> > &sim_vec, int sim_len, const int iterations)
 ```
 - Returns a 2d vector of simulated asset paths of the dimension iterations x sim_len. ```data``` is the historical asset price timeseries.
 
 
 ```c++
-double monte_carlo_fixed_strike_arithmatic_avg_asian_call(std::vector<double> data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000);
+double monte_carlo_fixed_strike_arithmatic_avg_asian_call(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
 - Returns the estimated value of a fixed strike arithmatic average asian call option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 ```c++
-double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
+double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
 - Returns the estimated value of a fixed strike arithmatic average asian put option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 
 ```c++
-double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double> data_underlying, const double k, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
+double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
 - Returns the estimated value of a floating strike arithmatic average asian call option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
 
 
 ```c++
-double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> data_underlying, const double k, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
+double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
 ```
 - Returns the estimated value of a floating strike arithmatic average asian put option. Lookback period for the average price is fixed from the first date of the Monte Carlo simulation through maturity.
+
+```c++
+double american_put_longstaff_schwartz(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
+```
+- Returns the value of an American put via Longstaff Schwartz
+
+```c++
+double american_call_longstaff_schwartz(std::vector<double> &data_underlying, const double strike, const double risk_free_rate, const int days_to_exp, const int iterations=100000)
+```
+- Returns the value of an American call via Longstaff Schwartz
 
 
 When compiling, link the library file
