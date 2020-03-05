@@ -16,7 +16,7 @@ A high-speed financial Monte Carlo simulation library for C++
 
 # Theory
 ## Assets
-Price timeseries for assets such as equities are typically modelled with the following stochastic differential equation (SDE):
+Price timeseries for assets are typically modelled with the following stochastic differential equation (SDE):
 
 <p align="center">
   <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;dS(t)&space;=&space;\mu&space;S(t)dt&space;&plus;&space;\sigma&space;S(t)B(t)">
