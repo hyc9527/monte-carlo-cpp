@@ -3,6 +3,9 @@
 # monte-carlo-cpp
 A high-speed financial Monte Carlo simulation library for C++
 
+# Contact
+Questions? Feel free to reach out via my LinkedIn on my profile page. I'm also seeking employment in data science/finance!
+
 # Dependencies
 
 * [GCC](https://gcc.gnu.org/)
