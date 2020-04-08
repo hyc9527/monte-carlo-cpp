@@ -44,7 +44,7 @@ A full derivation is available [here](https://www.quantstart.com/articles/Geomet
 The value of a European option at some time t is as follows:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;V(S(t),t)&space;=&space;\mathbb{E}^{Q}\left&space;[&space;h(S(T),T))exp\left&space;(-&space;\int_{t}^{T}r(s)ds\right&space;)&space;\right&space;]">
+  <img src="/equation_gifs/European_Options_Equation.gif?raw=true">
 </p>
 
 Where:
@@ -58,7 +58,7 @@ Where:
 The value of option payoff at maturity varies between option types:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;h(S(T),T)&space;=&space;\left\{\begin{matrix}&space;max\left&space;[&space;S(T)-K,0&space;\right&space;],&space;&&space;for\,call\,option&space;\\&space;max\left&space;[&space;K-S(T),0&space;\right&space;],&space;&&space;for\,put\,option&space;\end{matrix}\right.">
+  <img src="/equation_gifs/European_Option_Payout.gif?raw=true">
 </p>
 
 Where:
@@ -92,8 +92,9 @@ Pricing Asian and European options via Monte Carlo is accomplished by:
 When an American option is exercised only at maturity, its value would be the same as a European option. However, American options give the option holder the right to exercise the option at any time whereas European options can only be exercised at maturity. In order to value American options accurately, the time of ideal option excersize must be determined. One solution proposed by [Longstaff & Schwartz](https://people.math.ethz.ch/~hjfurrer/teaching/LongstaffSchwartzAmericanOptionsLeastSquareMonteCarlo.pdf) is to perform a polynomial regression to estimate the value of continuing to hold an option on each day until maturity and comparing with the value of exercising that option on each day until maturity. The ideal time for exercise is found by locating the first point where immediate exercise is more profitable than the discounted value of continuation. The value of the option is then estimated by averaging all discouted cash flows from ideal option exercise over each underlying Monte Carlo iteration.
 
 Using this method, the value of continuation is as follows:
+
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;F(\omega&space;;t_{_k})&space;=&space;\mathbb{E}^{Q}\left&space;[&space;\sum_{j=k&plus;1}^{K}&space;exp\left&space;(-&space;\int_{t_{k}}^{t_{j}}r(\omega,s)ds&space;\right)C(\omega&space;,t_{j};t_{k},T)|\mathfrak{F}_{\textup{tk}}\right&space;]">
+  <img src="/equation_gifs/Longstaff_Schwarts.gif?raw=true">
 </p>
 
 Where:
