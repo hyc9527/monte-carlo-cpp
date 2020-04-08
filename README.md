@@ -69,10 +69,11 @@ Where:
 The equation for valuing European options can be applied to Asian options as well, taking into account differing payoff formulae:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;V(S(t),t)&space;=&space;\mathbb{E}^{Q}\left&space;[&space;h(S(t,T),T))exp\left&space;(-&space;\int_{t}^{T}r(s)ds\right&space;)&space;\right&space;]">
+  <img src="/equation_gifs/Asian_Options_Equation.gif?raw=true">
 </p>
+
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\large&space;h(S(t,T),T)&space;=&space;\left\{\begin{matrix}&space;max\left&space;[&space;\frac{1}{T}(&space;\int_{0}^{T}S(t)dt)-K,&space;0\right&space;],&space;&&space;for\,fixed\,strike\,arithmatic\,mean\,call\,option&space;\\&space;max\left&space;[K&space;-&space;\frac{1}{T}(&space;\int_{0}^{T}S(t)dt),&space;0\right&space;],&space;&&space;for\,fixed\,strike\,arithmatic\,mean\,put\,option&space;\\&space;max\left&space;[&space;S(T)-\frac{k}{T}(&space;\int_{0}^{T}S(t)dt),0&space;\right&space;],&space;&&space;for\,floating\,strike\,arithmatic\,mean\,call\,option\\&space;max\left&space;[\frac{k}{T}(&space;\int_{0}^{T}S(t)dt)-S(T),0&space;\right&space;],&space;&&space;for\,floating\,strike\,arithmatic\,mean\,put\,option&space;\end{matrix}\right.">
+  <img src="/equation_gifs/Asian_Option_Payout.gif?raw=true">
 </p>
 
 Where:
