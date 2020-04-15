@@ -22,7 +22,7 @@ Questions? Feel free to reach out via my LinkedIn on my profile page. I'm also s
 Price timeseries for assets are typically modelled with the following stochastic differential equation (SDE):
 
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;dS(t)&space;=&space;\mu&space;S(t)dt&space;&plus;&space;\sigma&space;S(t)B(t)">
+  <img src="/equation_gifs/SDE.gif?raw=true">
 </p>
 
 Where:
@@ -34,7 +34,7 @@ Where:
 This SDE can be solved by applying Ito's Lemma, resulting in the following equation:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?\LARGE&space;S(t)&space;=&space;S(0)e^{(\mu&space;-&space;\frac{1}{2}\sigma&space;^{2})t&space;&plus;&space;\sigma&space;B(t)}">
+  <img src="/equation_gifs/solved_SDE.gif?raw=true">
 </p>
 
 A full derivation is available [here](https://www.quantstart.com/articles/Geometric-Brownian-Motion/). This equation is used to perform the Monte Carlo simulation.
