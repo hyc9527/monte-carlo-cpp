@@ -26,7 +26,7 @@ void monte_carlo(std::vector<double> &data, std::vector<std::vector<double> > &s
     using namespace boost::accumulators;
     accumulator_set<double, features<tag::mean, tag::variance>> acc;
 
-    for(auto it=log_returns.begin(); it!=log_returns.end(); ++it){
+    for(std::vector<double>::iterator it=log_returns.begin(); it!=log_returns.end(); ++it){
         acc(*it);
     }
 
@@ -63,7 +63,7 @@ double monte_carlo_fixed_strike_arithmatic_avg_asian_call(std::vector<double> &d
 
     for(int i=0; i!=vec.size(); ++i){
         sum = 0.0;
-        for(auto it=vec[i].begin(); it!=vec[i].end(); ++it){
+        for(std::vector<double>::iterator it=vec[i].begin(); it!=vec[i].end(); ++it){
             sum += *it;
         }
         average_prices.emplace_back(sum / double(days_to_exp));  
@@ -71,7 +71,7 @@ double monte_carlo_fixed_strike_arithmatic_avg_asian_call(std::vector<double> &d
 
     // determine average payout & discount back
     sum = 0.0;
-    for(auto it=average_prices.begin(); it!=average_prices.end(); ++it){
+    for(std::vector<double>::iterator it=average_prices.begin(); it!=average_prices.end(); ++it){
         sum += std::max(*it - strike, 0.0);
     }
     return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 252.0));
@@ -91,7 +91,7 @@ double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> &da
 
     for(int i=0; i!=vec.size(); ++i){
         sum = 0.0;
-        for(auto it=vec[i].begin(); it!=vec[i].end(); ++it){
+        for(std::vector<double>::iterator it=vec[i].begin(); it!=vec[i].end(); ++it){
             sum += *it;
         }
         average_prices.emplace_back(sum / double(days_to_exp));  
@@ -99,7 +99,7 @@ double monte_carlo_fixed_strike_arithmatic_avg_asian_put(std::vector<double> &da
 
     // determine average payout & discount back
     sum = 0.0;
-    for(auto it=average_prices.begin(); it!=average_prices.end(); ++it){
+    for(std::vector<double>::iterator it=average_prices.begin(); it!=average_prices.end(); ++it){
         sum += std::max(strike - *it, 0.0);
     }
     return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 252.0));
@@ -120,7 +120,7 @@ double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double>
 
     for(int i=0; i!=vec.size(); ++i){
         sum = 0.0;
-        for(auto it=vec[i].begin(); it!=vec[i].end(); ++it){
+        for(std::vector<double>::iterator it=vec[i].begin(); it!=vec[i].end(); ++it){
             sum += *it;
         }
         average_prices.emplace_back(sum / double(days_to_exp));  
@@ -135,7 +135,7 @@ double monte_carlo_floating_strike_arithmatic_avg_asian_call(std::vector<double>
 
     // determine average payout & discount back
     sum = 0.0;
-    for(auto it=average_prices.begin(); it!=average_prices.end(); ++it){
+    for(std::vector<double>::iterator it=average_prices.begin(); it!=average_prices.end(); ++it){
         sum += std::max(maturity_price - (*it * strike), 0.0);
     }
     return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 252.0));
@@ -156,7 +156,7 @@ double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> 
 
     for(int i=0; i!=vec.size(); ++i){
         sum = 0.0;
-        for(auto it=vec[i].begin(); it!=vec[i].end(); ++it){
+        for(std::vector<double>::iterator it=vec[i].begin(); it!=vec[i].end(); ++it){
             sum += *it;
         }
         average_prices.emplace_back(sum / double(days_to_exp));  
@@ -171,7 +171,7 @@ double monte_carlo_floating_strike_arithmatic_avg_asian_put(std::vector<double> 
 
     // determine average payout & discount back
     sum = 0.0;
-    for(auto it=average_prices.begin(); it!=average_prices.end(); ++it){
+    for(std::vector<double>::iterator it=average_prices.begin(); it!=average_prices.end(); ++it){
         sum += std::max((*it * strike) - maturity_price, 0.0);
     }
     return (sum / double(iterations)) * std::exp(-risk_free_rate * (double(days_to_exp) / 252.0));
@@ -192,7 +192,7 @@ double american_put_longstaff_schwartz(std::vector<double> &data_underlying, con
     monte_carlo(data_underlying, sim_vec, days_to_exp, iterations);
 
     // work backwards, starting with maturity date
-    for(auto it=sim_vec.begin(); it!=sim_vec.end(); ++it){
+    for(std::vector<std::vector<double>>::iterator it=sim_vec.begin(); it!=sim_vec.end(); ++it){
         day_cash.emplace_back(std::max(it->back() - strike, 0.0));
     }
     cfm.emplace_back(day_cash);
@@ -248,7 +248,7 @@ double american_put_longstaff_schwartz(std::vector<double> &data_underlying, con
         }
 
         // exercise data to cash flow matrix
-        auto insert_front = cfm.begin();
+        std::vector<std::vector<double>>::iterator insert_front = cfm.begin();
         cfm.insert(insert_front, day_cash);
     }
 
@@ -282,7 +282,7 @@ double american_call_longstaff_schwartz(std::vector<double> &data_underlying, co
     monte_carlo(data_underlying, sim_vec, days_to_exp, iterations);
 
     // work backwards, starting with maturity date
-    for(auto it=sim_vec.begin(); it!=sim_vec.end(); ++it){
+    for(std::vector<std::vector<double>>::iterator it=sim_vec.begin(); it!=sim_vec.end(); ++it){
         day_cash.emplace_back(std::max(strike - it->back(), 0.0));
     }
     cfm.emplace_back(day_cash);
@@ -338,7 +338,7 @@ double american_call_longstaff_schwartz(std::vector<double> &data_underlying, co
         }
 
         // exercise data to cash flow matrix
-        auto insert_front = cfm.begin();
+        std::vector<std::vector<double>>::iterator insert_front = cfm.begin();
         cfm.insert(insert_front, day_cash);
     }
 
